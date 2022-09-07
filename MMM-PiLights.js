@@ -28,7 +28,7 @@ Module.register('MMM-PiLights',{
      * @param {*}      payload
      */
     notificationReceived: function(notification, payload) {
-        if (notification === 'PILIGHTS_SEQUENCE') {
+        if (notification === 'PILIGHTS_SEQUENCE' || notification === 'USER_PRESENCE') {
             this.sendSocketNotification('SEQUENCE', payload);
         }
     },

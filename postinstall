@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ ! -d ../../node_modules/electron-rebuild ]; then
+   echo elctron-rebuild not installed in MagicMirror
+   cd ../../
+   npm --no-audit --no-fund install  electron-rebuild
+   cd - 
+fi
+ ../../node_modules/.bin/electron-rebuild -e ../../node_modules/electron

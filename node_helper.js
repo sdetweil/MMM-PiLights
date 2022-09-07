@@ -20,6 +20,7 @@ module.exports = NodeHelper.create({
     stopAnimationRequest: false,
     defaultSpeed:         100,
     type: 'ws2801',
+    lastSequence: null,
 
     /**
      * node_helper start method
@@ -107,12 +108,23 @@ module.exports = NodeHelper.create({
                 sequence   = payload.sequence;
                 iterations = payload.iterations || iterations;
                 delay      = payload.delay      || delay;
+                this.lastSequence=payload
             }
 
             Promise.resolve(this.runSequence(sequence, iterations, delay)
                 .catch((err) => {
                     this.log('Sequence error: ' + err.message);
                 }));
+        } else if (notification === ' USER_PRESENCE'){
+            if(payload == false){
+                this.leds.allOFF();
+            } else {
+                // user present, restore the last active sequence
+                Promise.resolve(this.runSequence(this.lastSequence.sequence, thi,lastSequence.iterations,this.lastSequence.delay)
+                .catch((err) => {
+                    this.log('user present Sequence error: ' + err.message);
+                }));
+            }
         }
     },
 

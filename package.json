@@ -9,7 +9,7 @@
     "module"
   ],
   "scripts": {
-    "postinstall": "node_modules/.bin/electron-rebuild -e ../../node_modules/electron"
+    "postinstall": "./postinstall"
   },
   "author": "Jamie Curnow",
   "license": "MIT",
@@ -19,9 +19,7 @@
     "body-parser": "latest",
     "color": "latest",
     "lpd8806-async": "github:Trekky12/LPD8806-node",
+    "nan": "latest",
     "rpi-ws2801": "github:Trekky12/node-rpi-ws2801"
-  },
-  "devDependencies": {
-    "electron-rebuild": "latest"
   }
 }
