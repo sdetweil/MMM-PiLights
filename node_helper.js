@@ -115,7 +115,7 @@ module.exports = NodeHelper.create({
                 .catch((err) => {
                     this.log('Sequence error: ' + err.message);
                 }));
-        } else if (notification === ' USER_PRESENCE'){
+        } else if (notification === 'USER_PRESENCE'){
             if(payload == false){
                 this.leds.allOFF();
             } else {
